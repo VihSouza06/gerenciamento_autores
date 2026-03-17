@@ -25,7 +25,7 @@ public class AutorService {
         autorRepository.deleteById(id);
     }
 
-    public AutorModel buscarAutorPotId(Long id){
+    public AutorModel buscarAutorPorId(Long id){
         return autorRepository.findById(id).get();
     }
 
