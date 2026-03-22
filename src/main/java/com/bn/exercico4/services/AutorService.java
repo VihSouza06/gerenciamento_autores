@@ -30,8 +30,11 @@ public class AutorService {
     }
 
     public AutorModel atualizarAutor(Long id, AutorModel autorModel){
-        AutorModel newAutorModel = autorRepository.findById(id).get();
-        return autorRepository.save(autorModel);
+        AutorModel novoAutor = autorRepository.findById(id).get();
+        novoAutor.setNome(autorModel.getNome());
+        novoAutor.setNacionalidade(autorModel.getNacionalidade());
+        novoAutor.setDataNascimento(autorModel.getDataNascimento());
+        return autorRepository.save(novoAutor);
     }
 
 }

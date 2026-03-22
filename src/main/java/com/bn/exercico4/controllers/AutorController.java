@@ -1,6 +1,7 @@
 package com.bn.exercico4.controllers;
 
 import com.bn.exercico4.models.AutorModel;
+import com.bn.exercico4.repositories.AutorRepository;
 import com.bn.exercico4.services.AutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +20,14 @@ public class AutorController {
 
     @GetMapping
     public ResponseEntity<List<AutorModel>> findAll(){
-        List<AutorModel> autor = autorService.findAll();
-        return ResponseEntity.ok().body(autor);
+        List<AutorModel> autores = autorService.findAll();
+        return ResponseEntity.ok().body(autores);
     }
 
     @GetMapping("/{id}")
-    public AutorModel buscarAutorPorId(@PathVariable Long id){
-        return autorService.buscarAutorPorId(id);
+    public ResponseEntity<AutorModel> buscarAutorPorId(@PathVariable Long id){
+        AutorModel autor = autorService.buscarAutorPorId(id);
+        return ResponseEntity.ok(autor);
     }
 
     @PostMapping
